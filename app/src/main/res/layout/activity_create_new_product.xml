@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CreateNewProduct">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Busqueda del producto"
+        android:textSize="35dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Id"
+        android:textSize="20dp"/>
+
+    <EditText
+        android:id="@+id/edtFieldIdProd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint=""/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Producto"
+        android:textSize="20dp"/>
+
+    <EditText
+        android:id="@+id/edtFieldProd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint=""/>
+
+    <Button
+        android:id="@+id/btnSearchProd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CREAR"/>
+
+
+</LinearLayout>
