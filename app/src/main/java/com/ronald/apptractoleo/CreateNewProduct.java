@@ -1,14 +1,34 @@
 package com.ronald.apptractoleo;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.StrictMode;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -16,24 +36,116 @@ import java.sql.SQLException;
 
 public class CreateNewProduct extends AppCompatActivity {
 
-    EditText edtvFieldProd, edtvFieldIdProd;
-    Button btnvSearchProd;
+    EditText edtvFieldProd, edtvFieldIdProd, edtvFileName;
+    Button btnvCreateProd, btnvFileArchive;
+    ImageView imgvInsertProd;
+    TextView txtvFilePath;
+
+    private static final int REQUEST_CODE_STORAGE_PERMISSION = 1;
+    private static final int REQUEST_CODE_SELECT_IMAGE = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_new_product);
 
-        edtvFieldProd = (EditText) findViewById(R.id.edtFieldProd);
-        edtvFieldIdProd = (EditText) findViewById(R.id.edtFieldIdProd);
-        btnvSearchProd = (Button) findViewById(R.id.btnSearchProd);
+        edtvFieldProd = findViewById(R.id.edtFieldProd);
+        edtvFieldIdProd = findViewById(R.id.edtFieldIdProd);
+        edtvFileName = findViewById(R.id.edtFileName);
 
-        btnvSearchProd.setOnClickListener(new View.OnClickListener() {
+        btnvCreateProd = findViewById(R.id.btnCreateProd);
+        btnvFileArchive = findViewById(R.id.btnFileImage);
+
+        txtvFilePath = findViewById(R.id.txtFilePath);
+
+        imgvInsertProd = findViewById(R.id.imgviewProdInsert);
+
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,
+        Manifest.permission.WRITE_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
+
+        btnvFileArchive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AddProduct();
+                if(ContextCompat.checkSelfPermission(getApplicationContext(),Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED)
+                {
+                    ActivityCompat.requestPermissions(CreateNewProduct.this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_CODE_STORAGE_PERMISSION);
+                }
+                else{
+                    selectImage();
+                }
             }
         });
+    }
+
+    public void selectImage()
+    {
+        Intent intFileImg = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        if (intFileImg.resolveActivity(getPackageManager()) != null)
+        {
+            startActivityForResult(intFileImg, REQUEST_CODE_SELECT_IMAGE);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == REQUEST_CODE_STORAGE_PERMISSION && grantResults.length > 0) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                selectImage();
+            } else {
+                Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode==REQUEST_CODE_SELECT_IMAGE && resultCode == RESULT_OK)
+        {
+            if(data != null)
+            {
+                Uri selectedImageUri = data.getData();
+                if(selectedImageUri != null)
+                {
+                    try{
+                        InputStream varInputStream = getContentResolver().openInputStream(selectedImageUri);
+                        Bitmap varBitmap = BitmapFactory.decodeStream(varInputStream);
+                        imgvInsertProd.setImageBitmap(varBitmap);
+
+                        btnvCreateProd.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                ByteArrayOutputStream varByteArrayOutputStream = new ByteArrayOutputStream();
+                                varBitmap.compress(Bitmap.CompressFormat.PNG, 0, varByteArrayOutputStream);
+                                byte[] byteImg = varByteArrayOutputStream.toByteArray();
+
+                                try{
+                                    PreparedStatement pst = connectionDB().prepareStatement("insert into Prueba values (?,?,?)");
+                                    pst.setString(1,edtvFieldIdProd.getText().toString());
+                                    pst.setString(2,edtvFieldProd.getText().toString());
+                                    pst.setBytes(3,byteImg);
+                                    pst.executeUpdate();
+
+                                    Toast.makeText(getApplicationContext(), "Producto creado", Toast.LENGTH_SHORT).show();
+                                }
+                                catch (SQLException e)
+                                {
+                                    Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                    }
+                    catch (Exception e)
+                    {
+                        Toast.makeText(this, e.getMessage(),Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        }
     }
 
     public Connection connectionDB()
@@ -54,19 +166,4 @@ public class CreateNewProduct extends AppCompatActivity {
         return Varconnection;
     }
 
-    public void AddProduct()
-    {
-        try{
-            PreparedStatement pst = connectionDB().prepareStatement("insert into Prueba values (?,?)");
-            pst.setString(1,edtvFieldIdProd.getText().toString());
-            pst.setString(2,edtvFieldProd.getText().toString());
-            pst.executeUpdate();
-
-            Toast.makeText(getApplicationContext(), "Actualizado", Toast.LENGTH_SHORT).show();
-        }
-        catch (SQLException e)
-        {
-            Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
-        }
-    }
 }

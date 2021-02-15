@@ -10,8 +10,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Busqueda del producto"
-        android:textSize="35dp"/>
+        android:text="Crear producto"
+        android:textSize="35dp" />
 
     <TextView
         android:layout_width="match_parent"
@@ -38,10 +38,33 @@
         android:hint=""/>
 
     <Button
-        android:id="@+id/btnSearchProd"
+        android:id="@+id/btnCreateProd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="CREAR"/>
+
+    <Button
+        android:id="@+id/btnFileImage"
+        android:text="FileArchive"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/txtFilePath"
+        android:text="hbbhhbhbhb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="filename"
+        android:id="@+id/edtFileName"/>
+
+    <ImageView
+        android:id="@+id/imgviewProdInsert"
+        android:layout_width="800px"
+        android:layout_height="800px"/>
 
 
 </LinearLayout>

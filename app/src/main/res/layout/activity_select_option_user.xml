@@ -7,4 +7,10 @@
     tools:context=".SelectOptionUser"
     android:orientation="vertical">
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnActivityCreateProd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="crear producto"/>
+
 </LinearLayout>
