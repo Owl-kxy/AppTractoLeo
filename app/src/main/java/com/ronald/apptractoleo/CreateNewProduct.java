@@ -51,12 +51,12 @@ public class CreateNewProduct extends AppCompatActivity {
 
         edtvFieldProd = findViewById(R.id.edtFieldProd);
         edtvFieldIdProd = findViewById(R.id.edtFieldIdProd);
-        edtvFileName = findViewById(R.id.edtFileName);
+        //edtvFileName = findViewById(R.id.edtFileName);
 
         btnvCreateProd = findViewById(R.id.btnCreateProd);
         btnvFileArchive = findViewById(R.id.btnFileImage);
 
-        txtvFilePath = findViewById(R.id.txtFilePath);
+        //txtvFilePath = findViewById(R.id.txtFilePath);
 
         imgvInsertProd = findViewById(R.id.imgviewProdInsert);
 
