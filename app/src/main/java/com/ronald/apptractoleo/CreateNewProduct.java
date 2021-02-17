@@ -20,9 +20,11 @@ import android.os.Environment;
 import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,7 +34,10 @@ import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 public class CreateNewProduct extends AppCompatActivity {
 
@@ -40,6 +45,7 @@ public class CreateNewProduct extends AppCompatActivity {
     Button btnvCreateProd, btnvFileArchive;
     ImageView imgvInsertProd;
     TextView txtvFilePath;
+    Spinner spinnvMarca;
 
     private static final int REQUEST_CODE_STORAGE_PERMISSION = 1;
     private static final int REQUEST_CODE_SELECT_IMAGE = 2;
@@ -60,6 +66,10 @@ public class CreateNewProduct extends AppCompatActivity {
 
         imgvInsertProd = findViewById(R.id.imgviewProdInsert);
 
+        spinnvMarca = findViewById(R.id.spinnMarca);
+
+        fillSpinner();
+
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,
         Manifest.permission.WRITE_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
 
@@ -75,6 +85,29 @@ public class CreateNewProduct extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void fillSpinner()
+    {
+        try{
+            Statement stm = connectionDB().createStatement();
+            ResultSet rs = stm.executeQuery("SELECT * FROM Tbl_Marca");
+
+            ArrayList<String> marca = new ArrayList<String>();
+
+            while(rs.next())
+            {
+                String namemarca = rs.getString("nombre_marca");
+                marca.add(namemarca);
+            }
+
+            ArrayAdapter array = new ArrayAdapter(this, R.layout.spinn_fill_marca,marca);
+            spinnvMarca.setAdapter(array);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
     public void selectImage()

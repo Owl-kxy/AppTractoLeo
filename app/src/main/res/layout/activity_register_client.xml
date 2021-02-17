@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:backgroundTint="@color/colorSplash"
         android:orientation="vertical"
-        tools:context=".CreateNewProduct">
+        tools:context=".RegisterClient">
 
         <TextView
             android:layout_width="match_parent"
@@ -20,7 +20,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="20dp"
             android:fontFamily="@font/abel"
-            android:text="Agregar productos"
+            android:text="Registrar clientes"
             android:textAlignment="center"
             android:textSize="25dp"
             android:textStyle="bold" />
@@ -28,32 +28,19 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Id"
-            android:textSize="20dp" />
-
-        <EditText
-            android:id="@+id/edtFieldIdProd"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:fontFamily="@font/abel"
-            android:text="Producto"
+            android:text="DNI"
             android:textSize="17dp"
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/edtFieldProd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:hint="Ingrese el nombre del repuesto"
+            android:hint="Ingrese el DNI del cliente"
             android:textColorHint="@color/teal_700"
             android:fontFamily="@font/abel"
             android:textSize="17dp" />
@@ -65,53 +52,16 @@
             android:layout_marginTop="15dp"
             android:layout_marginRight="20dp"
             android:fontFamily="@font/abel"
-            android:text="Marca del repuesto"
-            android:textSize="17dp"
-            android:textStyle="bold" />
-
-        <Spinner
-            android:id="@+id/spinnMarca"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="100dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="20dp"
-            android:fontFamily="@font/abel"
-            android:text="Serie del repuesto"
-            android:textSize="17dp"
-            android:textStyle="bold" />
-
-        <Spinner
-            android:id="@+id/spinnSerie"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="100dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="20dp"
-            android:fontFamily="@font/abel"
-            android:text="Código del repuesto"
+            android:text="Nombre "
             android:textSize="17dp"
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/edtCodProd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:hint="Ingrese el código del repuesto"
+            android:hint="Ingrese el nombre del cliente"
             android:textColorHint="@color/teal_700"
             android:fontFamily="@font/abel"
             android:textSize="17dp" />
@@ -123,7 +73,49 @@
             android:layout_marginTop="15dp"
             android:layout_marginRight="20dp"
             android:fontFamily="@font/abel"
-            android:text="Precio del repuesto"
+            android:text="Apellido paterno"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:hint="Ingrese el apellido paterno"
+            android:textColorHint="@color/teal_700"
+            android:fontFamily="@font/abel"
+            android:textSize="17dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="20dp"
+            android:fontFamily="@font/abel"
+            android:text="Apellido materno"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:hint="Ingrese el apellido materno"
+            android:textColorHint="@color/teal_700"
+            android:fontFamily="@font/abel"
+            android:textSize="17dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="20dp"
+            android:fontFamily="@font/abel"
+            android:text="Telefono de contacto"
             android:textSize="17dp"
             android:textStyle="bold" />
 
@@ -133,7 +125,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:hint="Ingrese el precio (s/.)"
+            android:hint="Ingrese el numero de telefono XXXXXXXXX"
             android:textColorHint="@color/teal_700"
             android:fontFamily="@font/abel"
             android:textSize="17dp" />
@@ -145,7 +137,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginRight="20dp"
             android:fontFamily="@font/abel"
-            android:text="Unidades del repuesto"
+            android:text="Email "
             android:textSize="17dp"
             android:textStyle="bold" />
 
@@ -155,7 +147,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:hint="Ingrese el stock disponible del repuesto"
+            android:hint="Ingrese el correo del cliente user@example.com"
             android:textColorHint="@color/teal_700"
             android:fontFamily="@font/abel"
             android:textSize="17dp" />
@@ -167,7 +159,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginRight="20dp"
             android:fontFamily="@font/abel"
-            android:text="Descripción del repuesto"
+            android:text="Direccion"
             android:textSize="17dp"
             android:textStyle="bold" />
 
@@ -177,7 +169,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:hint="Ingrese la descripción"
+            android:hint="Ingrese la direccion del cliente"
             android:textColorHint="@color/teal_700"
             android:fontFamily="@font/abel"
             android:textSize="17dp" />
@@ -189,7 +181,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginRight="20dp"
             android:fontFamily="@font/abel"
-            android:text="Ubicación del repuesto"
+            android:text="Ciudad de residencia"
             android:textSize="17dp"
             android:textStyle="bold" />
 
@@ -199,7 +191,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:hint="¿Donde se encuentra el repuesto?"
+            android:hint="Ingrese la ciudad de residencia"
             android:textColorHint="@color/teal_700"
             android:fontFamily="@font/abel"
             android:textSize="17dp" />
@@ -208,53 +200,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="20dp"
-            android:fontFamily="@font/abel"
-            android:text="Seleccione la imagen del repuesto"
-            android:textSize="17dp"
-            android:textStyle="bold" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:fontFamily="@font/abel"
-            android:text="Presione el botón (Seleccionar imagen) para buscar en su galeria al producto, si el producto no se visualiza es porque el archivo es muy pesado"
-            android:textSize="16dp"/>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnFileImage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/abel"
-            android:textSize="17dp"
-            android:textStyle="bold"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginRight="40dp"
-            android:layout_marginLeft="40dp"
-            android:text="Seleccionar imagen" />
-
-        <ImageView
-            android:id="@+id/imgviewProdInsert"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:layout_gravity="center"
-            app:srcCompat="@drawable/ic_launcher_background" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
             android:fontFamily="@font/abel"
-            android:text="Si ya termino de ingresar la informacion presione el boton (Crear producto) "
+            android:text="Si ya termino de ingresar la informacion presione el boton (Añadir cliente) "
             android:textSize="16dp"/>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnCreateProd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
@@ -263,7 +215,7 @@
             android:layout_marginBottom="60dp"
             android:fontFamily="@font/abel"
             android:textStyle="bold"
-            android:text="Crear producto"
+            android:text="Añadir cliente"
             android:textSize="17dp" />
 
     </LinearLayout>

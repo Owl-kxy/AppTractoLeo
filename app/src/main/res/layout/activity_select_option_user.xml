@@ -12,10 +12,10 @@
         android:orientation="vertical">
 
         <TextView
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="15dp"
             android:textAlignment="center"
             android:fontFamily="@font/abel"
             android:textSize="18dp"
@@ -24,6 +24,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Seleccione la actividad a realizar"/>
+
+        <TextView
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="25dp"
+            android:textAlignment="viewStart"
+            android:fontFamily="@font/abel"
+            android:textSize="16dp"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Presione sobre las siguientes opciones para consultar los repuestos, registrar nuevos productos o realizar alguna accion sobre los clientes frecuentes "/>
         
         <LinearLayout
             android:layout_width="match_parent"
@@ -146,7 +158,7 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="15dp"/>
+            android:layout_height="20dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -158,6 +170,7 @@
 
             <androidx.cardview.widget.CardView
 
+                android:id="@+id/cardRegClient"
                 android:clickable="true"
                 android:layout_width="150dp"
                 android:layout_height="230dp"
@@ -173,8 +186,8 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:padding="10dp"
-                        android:src="@drawable/ic_query_prods"
-                        android:background="@drawable/round_backgroundgray"/>
+                        android:src="@drawable/ic_add_user"
+                        android:background="@drawable/round_backgroundgreen"/>
 
                     <View
                         android:layout_width="match_parent"
@@ -190,7 +203,7 @@
                         android:textStyle="bold"
                         android:textSize="17dp"
                         android:textColor="@color/black"
-                        android:text="Consultar\nrepuestos"/>
+                        android:text="Registrar\nclientes"/>
 
                     <View
                         android:layout_width="match_parent"
@@ -203,7 +216,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/abel"
                         android:textSize="15dp"
-                        android:text="Vea la descripcion, ubicacion y precio del producto"
+                        android:text="Registre la informacion personal de nuevos clientes"
                         android:textAlignment="center"/>
 
                 </LinearLayout>
@@ -211,11 +224,11 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardQueryClient"
                 android:clickable="true"
                 android:layout_width="150dp"
                 android:layout_height="230dp"
-                android:layout_margin="10dp"
-                >
+                android:layout_margin="10dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -227,7 +240,8 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:padding="10dp"
-                        android:background="@drawable/round_backgroundgray"/>
+                        android:src="@drawable/ic_search_user"
+                        android:background="@drawable/round_backgroundorange"/>
 
                     <View
                         android:layout_width="match_parent"
@@ -243,7 +257,7 @@
                         android:textStyle="bold"
                         android:textSize="17dp"
                         android:textColor="@color/black"
-                        android:text="Agregar\nproductos"/>
+                        android:text="Consultar\nclientes"/>
 
                     <View
                         android:layout_width="match_parent"
@@ -255,8 +269,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/abel"
+                        android:paddingRight="10dp"
+                        android:paddingLeft="10dp"
                         android:textSize="15dp"
-                        android:text="Registra nuevos repuestos en los almacenes"
+                        android:text="Obtenga de manera rápida la informacion de sus clientes"
                         android:textAlignment="center"/>
 
                 </LinearLayout>
@@ -264,6 +280,79 @@
             </androidx.cardview.widget.CardView>
 
         </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp">
+
+            <androidx.cardview.widget.CardView
+
+                android:clickable="true"
+                android:id="@+id/cardExit"
+                android:layout_width="320dp"
+                android:layout_height="180dp"
+                android:layout_margin="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="@drawable/round_backgroundred"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_exit" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_margin="10dp"
+                        android:background="@color/black" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/abel"
+                        android:text="Salir de la aplicacion"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_margin="10dp"
+                        android:background="@color/black" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/abel"
+                        android:text="Presione aqui para salir"
+                        android:textAlignment="center"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp"/>
 
     </LinearLayout>
 

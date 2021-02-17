@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">AppTractoLeo</string>
     <string name="info_subrayado"><u>Información del producto</u></string>
+    <string name="client_subrayado"><u>Información del cliente</u></string>
 </resources>

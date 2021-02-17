@@ -14,7 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppTractoLeo">
-        <activity android:name=".CreateNewProduct"></activity>
+        <activity android:name=".QueryClient"></activity>
+        <activity android:name=".RegisterClient" />
+        <activity android:name=".CreateNewProduct" />
         <activity android:name=".SearchProductUser" />
         <activity android:name=".MainActivity" />
         <activity android:name=".SelectOptionUser" />
